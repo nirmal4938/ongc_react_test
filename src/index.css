@@ -1,0 +1,474 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *::-webkit-scrollbar {
+    @apply w-1.5 h-1.5;
+  }
+
+  * {
+    scrollbar-color: rgba(52, 52, 52, 0.2) #d6d6d6;
+    scrollbar-width: thin;
+  }
+
+  *::-webkit-scrollbar-track {
+    @apply bg-gray-200 rounded-full bg-transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 rounded-full;
+  }
+
+  .noscroll {
+    scrollbar-width: none;
+  }
+
+  .noscroll::-webkit-scrollbar {
+    @apply w-0 h-0;
+  }
+
+  body {
+    @apply font-Quicksand font-normal;
+  }
+
+  * {
+    @apply focus:outline-[0];
+  }
+
+  .otp-input input {
+    @apply sm:!w-14 sm:!h-14 !w-9 h-9 border border-black/5 rounded sm:mx-2 mx-1 sm:leading-[33px];
+  }
+
+  /*  */
+  table:not(.small, .pdfTable) tbody {
+    @apply before:leading-4 before:content-[''] before:block before:h-2;
+  }
+
+  table:not(.small, .pdfTable) th {
+    @apply bg-[#e3d6d6] cursor-pointer py-2 2xl:py-15px px-3 first:pl-5 first:rounded-l-lg last:rounded-r-lg text-dark text-sm/4 2xl:text-base/5 text-left;
+  }
+
+  table:not(.small, .pdfTable) td {
+    @apply bg-primaryRed/[0.03] font-bold py-2 2xl:py-4 px-3 first:pl-5 text-black/50 text-sm/4 border-b border-solid border-black/10;
+  }
+
+  table:not(.small, .pdfTable) tr:first-child td {
+    @apply first:rounded-tl-lg last:rounded-tr-lg;
+  }
+
+  table:not(.small, .pdfTable) tr:last-child td {
+    @apply border-b-0 first:rounded-bl-lg last:rounded-br-lg;
+  }
+
+  /*  */
+  select {
+    @apply bg-DownArrow bg-no-repeat appearance-none bg-[90%_center] cursor-pointer font-semibold pr-5 bg-transparent;
+  }
+
+  table.timesheet-table th {
+    @apply px-1 py-3;
+  }
+
+  table.timesheet-table td {
+    @apply px-1 py-3;
+  }
+
+  table.small:not(.pdf-table) tr:not(:last-child) td {
+    @apply border-b border-solid border-black/10;
+  }
+
+  table.small:not(.pdf-table) {
+    @apply border border-black/[0.08];
+  }
+
+  table.small:not(.pdf-table) tr td,
+  table.small:not(.pdf-table) tr th {
+    @apply first:pl-4;
+  }
+
+  .main-table table thead:before {
+    @apply content-[''] absolute w-full h-2 bg-[#f5f5f5] top-[99%];
+  }
+  .ReactDatePickerMianWrapper .react-datepicker-wrapper {
+    @apply w-full;
+  }
+  thead {
+    @apply sticky z-[1] top-0;
+  }
+  /* .main-table .table-wrapper th {
+    @apply !bg-[#e3d6d6];
+  } */
+
+  .ql-container {
+    @apply rounded-b-10 bg-[#fefcfc];
+  }
+
+  .ql-snow.ql-toolbar {
+    @apply block rounded-t-10 bg-[#fefcfc];
+  }
+
+  .custom-editor .ql-editor {
+    @apply min-h-[10em] bg-white;
+  }
+  .custom-editor .ql-toolbar.ql-snow {
+    @apply bg-white;
+  }
+
+  .quill .ql-snow.ql-toolbar {
+    background: #f8f8f8;
+    border-bottom: 0px;
+    @apply border-primaryBlack1/[0.08] bg-primaryGray;
+  }
+
+  .quill .ql-container.ql-snow {
+    @apply border-primaryBlack1/[0.08] bg-primaryGray;
+  }
+
+  .quill .ql-snow .ql-picker {
+    @apply text-black/30;
+  }
+
+  /* .custom-editor .ql-editor span,
+  .custom-editor .ql-editor .str {
+    @apply bg-yellow-300 font-semibold
+  } */
+
+  .custom-editor .ql-editor strong {
+    @apply font-semibold;
+  }
+  .quill .ql-snow .ql-stroke {
+    @apply stroke-[#aeaeae];
+  }
+
+  .quill .ql-snow .ql-fill,
+  .quill .ql-snow .ql-stroke.ql-fill {
+    @apply fill-[#aeaeae];
+  }
+
+  .custom-editor .ql-snow .ql-tooltip {
+    @apply z-3;
+  }
+
+  .admin-wrapper header .custom-select-wrap svg {
+    @apply fill-[#666666];
+  }
+
+  body[dir="rtl"] .ql-editor {
+    direction: rtl;
+    text-align: right;
+  }
+
+  div[dir="rtl"] .ql-editor {
+    direction: rtl;
+    text-align: right;
+  }
+
+  .select-svg-hide svg {
+    opacity: 0;
+  }
+
+  .table-file tr td {
+    @apply border-0 !border-transparent !border-none;
+  }
+
+  .table-file tr td[colspan] {
+    @apply !border-b !border-solid !border-black/10;
+  }
+
+  .chart-wrapper .apexcharts-tooltip {
+    @apply !border-none shadow-chartBox;
+  }
+
+  .chart-wrapper .apexcharts-tooltip .apexcharts-tooltip-title {
+    @apply font-Quicksand font-bold !bg-white py-[3px] px-2 tracking-wider;
+  }
+
+  .chart-wrapper .apexcharts-tooltip .apexcharts-tooltip-y-group {
+    @apply p-0;
+  }
+
+  .chart-wrapper .apexcharts-xaxistooltip {
+    @apply bg-white border-none shadow-chartBox rounded-md py-[5px] px-3;
+  }
+
+  .chart-wrapper .apexcharts-xaxistooltip .apexcharts-xaxistooltip-text {
+    @apply font-Quicksand font-bold;
+  }
+
+  .chart-wrapper .apexcharts-xaxistooltip {
+    @apply before:border-b-white after:border-b-white;
+  }
+
+  .react-datepicker .react-datepicker__month-select,
+  .react-datepicker .react-datepicker__year-select {
+    @apply border border-solid border-gray-300 py-0.5 pl-1 rounded;
+  }
+
+  .ReactDatePickerMianWrapper .react-datepicker {
+    @apply border-blueLight shadow-lg;
+  }
+
+  .ReactDatePickerMianWrapper .react-datepicker__header {
+    @apply bg-white;
+  }
+
+  .ReactDatePickerMianWrapper .react-datepicker__day-name,
+  .ReactDatePickerMianWrapper .react-datepicker__day,
+  .ReactDatePickerMianWrapper .react-datepicker__time-name {
+    @apply rounded-full;
+  }
+
+  .ReactDatePickerMianWrapper .react-datepicker__day--selected,
+  .ReactDatePickerMianWrapper .react-datepicker__day--in-selecting-range,
+  .ReactDatePickerMianWrapper .react-datepicker__day--in-range,
+  .ReactDatePickerMianWrapper .react-datepicker__month-text--selected,
+  .ReactDatePickerMianWrapper .react-datepicker__month-text--in-selecting-range,
+  .ReactDatePickerMianWrapper .react-datepicker__month-text--in-range,
+  .ReactDatePickerMianWrapper .react-datepicker__quarter-text--selected,
+  .ReactDatePickerMianWrapper
+    .react-datepicker__quarter-text--in-selecting-range,
+  .ReactDatePickerMianWrapper .react-datepicker__quarter-text--in-range,
+  .ReactDatePickerMianWrapper .react-datepicker__year-text--selected,
+  .ReactDatePickerMianWrapper .react-datepicker__year-text--in-selecting-range,
+  .ReactDatePickerMianWrapper .react-datepicker__year-text--in-range {
+    @apply bg-primaryRed hover:bg-primaryRed hover:rounded-full;
+  }
+
+  .ReactDatePickerMianWrapper .react-datepicker__day,
+  .ReactDatePickerMianWrapper .react-datepicker__month-text,
+  .ReactDatePickerMianWrapper .react-datepicker__quarter-text,
+  .ReactDatePickerMianWrapper .react-datepicker__year-text {
+    @apply hover:rounded-full;
+  }
+
+  .ReactDatePickerMianWrapper .react-datepicker__day-name,
+  .ReactDatePickerMianWrapper .react-datepicker__day,
+  .ReactDatePickerMianWrapper .react-datepicker__time-name {
+    @apply m-[5px] font-Quicksand font-semibold;
+  }
+
+  .ReactDatePickerMianWrapper .react-datepicker__header__dropdown {
+    @apply mt-10px mb-1;
+  }
+  .react-datepicker-popper {
+    @apply !z-10;
+  }
+  .ReactDatePickerMianWrapper
+    .react-datepicker-popper[data-placement^="bottom"]
+    .react-datepicker__triangle::before {
+    @apply border-b-blueLight;
+  }
+
+  .ReactDatePickerMianWrapper
+    .react-datepicker-popper[data-placement^="bottom"]
+    .react-datepicker__triangle::after {
+    @apply border-b-white;
+  }
+
+  .ReactDatePickerMianWrapper .react-datepicker__current-month,
+  .ReactDatePickerMianWrapper .react-datepicker-time__header,
+  .ReactDatePickerMianWrapper .react-datepicker-year-header,
+  .ReactDatePickerMianWrapper select {
+    @apply font-Quicksand;
+  }
+
+  .background-white .ql-toolbar,
+  .background-white .ql-editor {
+    @apply bg-white;
+  }
+
+  .PhoneInput {
+    @apply relative;
+  }
+
+  .PhoneInput .PhoneInputCountry {
+    @apply absolute top-1/2 -translate-y-1/2 left-15px;
+  }
+
+  .PhoneInput input {
+    @apply py-11px px-15px pl-16 text-sm/18px text-black placeholder:text-black/50 w-full border border-solid border-customGray/20 rounded-lg transition-all duration-300 focus:ring-2 focus:ring-customGray/30 focus:ring-offset-2;
+  }
+}
+.react-datepicker-wrapper {
+  @apply w-full;
+}
+.react-datepicker-popper {
+  @apply !z-10;
+}
+.roles-table table td.empty {
+  @apply !py-[5px] !bg-transparent !border-0;
+}
+
+.overflow-unset {
+  overflow: unset;
+}
+
+.pdf-table {
+  @apply small w-full border-collapse border-spacing-0;
+}
+
+.pdf-table th:not(.empty),
+.pdf-table td:not(.empty) {
+  @apply text-[8px] w-7 text-center first:border-l border-y border-r border-solid border-black;
+  /*  */
+}
+
+.pdf-table tr td {
+  @apply !border-t-0;
+}
+
+.pdf-table th.title-cell,
+.pdf-table td.title-cell {
+  @apply w-auto text-left;
+}
+
+.pdf-table th.big,
+.pdf-table td.big {
+  @apply w-9;
+}
+
+.pdf-table th.empty,
+.pdf-table td.empty {
+  @apply w-1 border-r border-solid border-black;
+}
+
+.modal .table-wrapper table thead:before {
+  @apply bg-transparent;
+}
+.modal .table-wrapper table thead th {
+  @apply !bg-[#e2e2e2];
+}
+
+@keyframes dash {
+  70% {
+    stroke-dashoffset: 0;
+    fill-opacity: 0;
+  }
+
+  80% {
+    fill-opacity: 0;
+    stroke-opacity: 1;
+  }
+
+  95% {
+    stroke-dashoffset: -301;
+    stroke-opacity: 0;
+  }
+
+  100% {
+    stroke-dashoffset: -301;
+    fill-opacity: 1;
+  }
+}
+
+.modify-leave:after {
+  @apply absolute -translate-x-2/4 -translate-y-2/4 w-[15px] h-0.5 bg-[red] content-[''] left-2/4 top-2/4;
+}
+
+.site-loader svg * {
+  stroke-width: 4;
+  fill-opacity: 0.8;
+  stroke-dasharray: 350;
+  stroke-dashoffset: 440;
+}
+
+.site-loader svg path {
+  stroke: #ffffff;
+}
+
+.site-loader svg path {
+  animation-name: dash;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+}
+
+@font-face {
+  font-family: "DejaVu Sans";
+  src: url("https://kendo.cdn.telerik.com/2017.2.621/styles/fonts/DejaVu/DejaVuSans.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "DejaVu Sans";
+  font-style: italic;
+  src: url("https://kendo.cdn.telerik.com/2017.2.621/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "DejaVu Sans";
+  font-style: italic;
+  src: url("https://kendo.cdn.telerik.com/2017.2.621/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "DejaVu Sans";
+  font-weight: bold;
+  src: url("https://kendo.cdn.telerik.com/2017.2.621/styles/fonts/DejaVu/DejaVuSans-Bold.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "DejaVu Sans";
+  font-style: italic;
+  src: url("https://kendo.cdn.telerik.com/2017.2.621/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf")
+    format("truetype");
+}
+
+.contract_header th:nth-child(2) {
+  display: none;
+}
+
+.pageBreakBefore {
+  page-break-before: always !important;
+}
+.pageBreakinside {
+  page-break-inside: avoid !important;
+}
+.main-table .blank-space {
+  background: #fff !important;
+  width: 5px !important;
+}
+
+.weekoff {
+  background-color: #eed9de5c !important;
+}
+
+.table_row:last-child .checkbox {
+  border-bottom-left-radius: 10px !important;
+}
+.table_row:last-child .space_wrapper {
+  border-bottom-right-radius: 10px !important;
+}
+.table_row td::marker {
+  font-size: 0 !important;
+}
+table:not(.small) th:last-child {
+  padding-right: 1.25rem !important;
+}
+th.date-column {
+  width: 25px;
+}
+.request-wrapper .custom-div-wrap {
+  overflow-y: auto !important;
+  overflow-x: unset !important;
+}
+table.pdf-table th:last-child {
+  padding-right: 0 !important;
+}
+/* table:not(.small, .pdfTable) th:last-child {
+  padding-right: 0 !important;
+} */
+
+.segment-popup .css-1xc3v61-indicatorContainer {
+  padding: 0 !important;
+}
+.segment-popup .css-16usfe8-Control2 {
+  padding: 12px !important;
+  height: calc(100dvh - 450px) !important;
+  overflow: auto !important;
+}

@@ -1,0 +1,30 @@
+export interface IAccountModifySummary {
+  employeeId: number;
+  isGeneratedInvoice: boolean;
+  clientId?: string | number;
+  invoiced?: number | null;
+  invoiceNumber?: string | null;
+  invoiceAmount?: number | null;
+  poNumber?: string | null;
+  poDate: Date | null;
+  bonus1Name?: string | null;
+  bonus1?: string | null;
+  poBonus1?: string | null;
+  invoiceNumberPOBonus1?: string | null;
+  bonus2Name?: string | null;
+  bonus2?: string | null;
+  poBonus2?: string | null;
+  invoiceNumberPOBonus2?: string | null;
+  bonus3Name?: string | null;
+  bonus3?: string | null;
+  poBonus3?: string | null;
+  invoiceNumberPOBonus3?: string | null;
+  additionalAmount: string | null;
+  additionalPOBonus: string | null;
+  additionalInvoiceNumberPO: string | null;
+  salaryPaid?: number | null;
+  comments?: string;
+  invoiceLodgingDate: Date | null;
+  dateSalaryPaid: Date | null;
+  timesheetId: string;
+}

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      * {
+        font-family: sans-serif;
+        box-sizing: border-box;
+        line-height: 1.6;
+      }
+
+      .page-footer,
+      .page-footer-space {
+        height: 40px;
+      }
+
+      .page-header,
+      .page-header-space {
+        height: 280px;
+      }
+
+      .page-footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        left: 0;
+        margin: 0 auto;
+      }
+
+      .page-header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        left: 0;
+        margin: 0 auto;
+      }
+
+      /* .page-footer:after {
+        counter-increment: page;
+        content: counter(page);
+      } */
+
+      .page {
+        page-break-after: always;
+      }
+
+      @media print {
+        thead {
+          display: table-header-group;
+        }
+
+        tfoot {
+          display: table-footer-group;
+        }
+
+        body {
+          margin: 0;
+        }
+      }
+
+      table {
+        page-break-inside: auto;
+      }
+
+      tr {
+        page-break-inside: avoid;
+        page-break-after: auto;
+      }
+
+      .table-wrap {
+        border-collapse: collapse;
+        /* border: 1px solid #e8e8e8; */
+      }
+
+      .table-wrap th,
+      .table-wrap td {
+        border-top: 1px solid #e8e8e8;
+        border-bottom: 1px solid #e8e8e8;
+        padding: 5px;
+        font-size: 12px;
+        line-height: 18px;
+      }
+
+      .dark-10 {
+        /* background-color: rgba(0, 0, 0, 0.1); */
+        background-color: #e5e5e5;
+      }
+
+      .dark-20 {
+        /* background-color: rgba(0, 0, 0, 0.2); */
+        background-color: #cccccc;
+      }
+
+      .dark-30 {
+        /* background-color: rgba(0, 0, 0, 0.3); */
+        background-color: #b2b2b2;
+      }
+
+      .dark-40 {
+        /* background-color: rgba(0, 0, 0, 0.4); */
+        background-color: #999999;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page-header" style="text-align: center">
+      <div class="" style="display: flex; flex-wrap: wrap">
+        <div class="" style="width: 50%">
+          <div class="" style="max-width: 250px">
+            <img src="{{company_logo}}" width="250px" height="85" alt="" />
+          </div>
+        </div>
+        <div class="" style="width: 50%">
+          <div class="" style="text-align: right">
+            {{#if report_header_text}} {{{report_header_text}}} {{else}}
+            <p style="font-size: 20px; font-weight: 500; margin: 0 0 12px">
+              iPoint LLC static
+            </p>
+            <p
+              style="
+                font-size: 16px;
+                font-weight: 500;
+                margin: 0 0 12px;
+                opacity: 0.7;
+              "
+            >
+              <a
+                href="ipointsolutions.net"
+                target="_blank"
+                style="text-decoration: none; color: black"
+                >ipointsolutions.net</a
+              >
+            </p>
+            <p
+              style="
+                font-size: 16px;
+                font-weight: 500;
+                margin: 0 0 12px;
+                opacity: 0.7;
+              "
+            >
+              <a
+                href="tel:8005354101"
+                style="text-decoration: none; color: black"
+                >(800) 535 - 4101</a
+              >
+            </p>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <div
+        class=""
+        style="display: flex; justify-content: space-between; padding: 12px"
+      >
+        <div style="font-weight: 300; color: #000000">1</div>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <td>
+            <!--place holder for the fixed-position header-->
+            <div class="page-header-space"></div>
+          </td>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>
+            <!--*** CONTENT GOES HERE ***-->
+            <div class="page">
+              <p
+                style="
+                  font-size: 18px;
+                  text-align: center;
+                  text-transform: uppercase;
+                  font-weight: 600;
+                  margin-top: 50px;
+                  margin-bottom: 30px;
+                "
+              >
+                Invoice Report
+              </p>
+              <table class="table-wrap" style="width: 100%">
+                <thead>
+                  <tr>
+                    <th style="text-align: left"></th>
+                    <th style="text-align: left">Invoice Date</th>
+                    <th style="text-align: left">Invoice #</th>
+                    <th style="text-align: left">Payment Method</th>
+                    <th style="text-align: left">Cheque #</th>
+                    <th style="text-align: left">Sent</th>
+                    <th style="text-align: left">Sub Total</th>
+                    <th style="text-align: left">Tax</th>
+                    <th style="text-align: left">Total</th>
+                    <th style="text-align: left">Payments</th>
+                    <th style="text-align: left">Balance</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#if total}} {{#each records}} {{# if (checkLength
+                  this.invoices_data)}}
+                  <tr>
+                    <td class=""><strong></strong></td>
+                    <td class="">
+                      {{dateFormat "YYYY-MM-DD" this.invoices_data.date}}
+                    </td>
+                    <td class="">{{this.invoices_data.invoice_number}}</td>
+                    <td class="">{{this.invoices_data.payment_method}}</td>
+                    <td class="">{{this.invoices_data.cheque_number}}</td>
+                    <td class="">
+                      {{#if this.invoices_data.sent_flag}}
+                      <img
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAkUlEQVR4nKXTPQ5BQRSG4ecWt2APbEQrlsAOrEUrYgkUStbBPiioJYRmppnkujPmS77mJOfN+YVGpRocscTwX8gGHzywxrgUMA2A6DdOIZ6lFvcEEn0J7Q36ILsOQPQVK4y6APMeQPQTh5L2srUorGCSAvY1M2h/bOGcs4VZkvQqvYNtSLyFMosusfoXqr+xSl+RyUoWJSY5NwAAAABJRU5ErkJggg=="
+                      />
+                      {{/if}}
+                    </td>
+                    <td class="">
+                      {{../prefixStr}} {{this.invoices_data.sub_total}}
+                      {{../sufixStr}}
+                    </td>
+                    <td class="">
+                      {{../prefixStr}} {{this.invoices_data.tax_amt}}
+                      {{../sufixStr}}
+                    </td>
+                    <td class="">
+                      {{../prefixStr}} {{this.invoices_data.total}}
+                      {{../sufixStr}}
+                    </td>
+                    <td class="">
+                      {{../prefixStr}} {{this.invoices_data.payments_amt}}
+                      {{../sufixStr}}
+                    </td>
+                    <td class="">
+                      {{../prefixStr}} {{this.invoices_data.balance_amt}}
+                      {{../sufixStr}}
+                    </td>
+                  </tr>
+                  {{else}}
+                  <tr>
+                    <td class="dark-20">
+                      <strong>{{this.contact_name}}</strong>
+                    </td>
+                    <td class="dark-20"></td>
+                    <td class="dark-20"></td>
+                    <td class="dark-20"></td>
+                    <td class="dark-20"></td>
+                    <td class="dark-20"></td>
+                    <td class="dark-20">
+                      {{../prefixStr}} {{this.contact_sub_total_invoiced}}
+                      {{../sufixStr}}
+                    </td>
+                    <td class="dark-20">
+                      {{../prefixStr}} {{this.contact_total_tax}}
+                      {{../sufixStr}}
+                    </td>
+                    <td class="dark-20">
+                      {{../prefixStr}} {{this.contact_total_invoiced}}
+                      {{../sufixStr}}
+                    </td>
+                    <td class="dark-20">
+                      {{../prefixStr}} {{this.contact_total_payments}}
+                      {{../sufixStr}}
+                    </td>
+                    <td class="dark-20">
+                      {{../prefixStr}} {{this.contact_total_balance}}
+                      {{../sufixStr}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="dark-10">
+                      <strong>{{this.patients.patient_name}}</strong>
+                    </td>
+                    <td class="dark-10"></td>
+                    <td class="dark-10"></td>
+                    <td class="dark-10"></td>
+                    <td class="dark-10"></td>
+                    <td class="dark-10"></td>
+                    <td class="dark-10">
+                      {{../prefixStr}}
+                      {{this.patients.patient_sub_total_invoiced}}
+                      {{../sufixStr}}
+                    </td>
+                    <td class="dark-10">
+                      {{../prefixStr}} {{this.patients.patient_total_tax}}
+                      {{../sufixStr}}
+                    </td>
+                    <td class="dark-10">
+                      {{../prefixStr}} {{this.patients.patient_total_invoiced}}
+                      {{../sufixStr}}
+                    </td>
+                    <td class="dark-10">
+                      {{../prefixStr}} {{this.patients.patient_total_payments}}
+                      {{../sufixStr}}
+                    </td>
+                    <td class="dark-10">
+                      {{../prefixStr}} {{this.patients.patient_total_balance}}
+                      {{../sufixStr}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class=""><strong></strong></td>
+                    <td class="">
+                      {{dateFormat "YYYY-MM-DD"
+                      this.patients.invoices.invoices_data.date}}
+                    </td>
+                    <td class="">
+                      {{this.patients.invoices.invoices_data.invoice_number}}
+                    </td>
+                    <td class="">
+                      {{this.patients.invoices.invoices_data.payment_method}}
+                    </td>
+                    <td class="">
+                      {{this.patients.invoices.invoices_data.cheque_number}}
+                    </td>
+                    <td class="">
+                      {{#if this.patients.invoices.invoices_data.sent_flag}}
+                      <img
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAkUlEQVR4nKXTPQ5BQRSG4ecWt2APbEQrlsAOrEUrYgkUStbBPiioJYRmppnkujPmS77mJOfN+YVGpRocscTwX8gGHzywxrgUMA2A6DdOIZ6lFvcEEn0J7Q36ILsOQPQVK4y6APMeQPQTh5L2srUorGCSAvY1M2h/bOGcs4VZkvQqvYNtSLyFMosusfoXqr+xSl+RyUoWJSY5NwAAAABJRU5ErkJggg=="
+                      />
+                      {{/if}}
+                    </td>
+                    <td class="">
+                      {{../prefixStr}}
+                      {{this.patients.invoices.invoices_data.sub_total}}
+                      {{../sufixStr}}
+                    </td>
+                    <td class="">
+                      {{../prefixStr}}
+                      {{this.patients.invoices.invoices_data.tax_amt}}
+                      {{../sufixStr}}
+                    </td>
+                    <td class="">
+                      {{../prefixStr}}
+                      {{this.patients.invoices.invoices_data.total}}
+                      {{../sufixStr}}
+                    </td>
+                    <td class="">
+                      {{../prefixStr}}
+                      {{this.patients.invoices.invoices_data.payments_amt}}
+                      {{../sufixStr}}
+                    </td>
+                    <td class="">
+                      {{../prefixStr}}
+                      {{this.patients.invoices.invoices_data.balance_amt}}
+                      {{../sufixStr}}
+                    </td>
+                  </tr>
+                  {{/if}} {{/each}} {{else}}
+                  <tr>
+                    <td colspan="11">
+                      <p
+                        style="
+                          margin-top: 20px;
+                          margin-bottom: 20px;
+                          text-align: center;
+                          padding-top: 10px;
+                          padding-bottom: 10px;
+                        "
+                      >
+                        No invoices
+                      </p>
+                    </td>
+                  </tr>
+                  {{/if}}
+                </tbody>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td>
+            <!--place holder for the fixed-position footer-->
+            <div class="page-footer-space"></div>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>
