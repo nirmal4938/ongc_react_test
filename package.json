@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
- "scripts": {
-  "dev": "vite",
-  "build": "tsc && vite build",
-  "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-  "preview": "vite preview",
-  "start": "serve -s dist"
-},
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "start": "serve -s dist"
+  },
   "dependencies": {
     "@air/react-drag-to-select": "^5.0.8",
     "@progress/kendo-react-pdf": "^5.15.0",
