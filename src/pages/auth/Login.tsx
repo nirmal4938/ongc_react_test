@@ -2,9 +2,9 @@ import { Formik, Form, ErrorMessage } from "formik";
 import { useRef, useState } from "react";
 import TextField from "../../components/formComponents/textField/TextField";
 import Button from "../../components/formComponents/button/Button";
-import { LoginValidationSchema } from "../../validations/auth/LoginValidation";
+// import { LoginValidationSchema } from "../../validations/auth/LoginValidation";
 import { IconEye, IconEyeSlash } from "../../components/svgIcons";
-import ReCAPTCHA from "react-google-recaptcha";
+// import ReCAPTCHA from "react-google-recaptcha";
 
 import { Link, useNavigate } from "react-router-dom";
 import { ILoginForm } from "@/interface/auth/loginInterface";
@@ -17,7 +17,7 @@ import {
   FeaturesNameEnum,
   PermissionEnum,
 } from "@/utils/commonConstants";
-import { VITE_GOOGLE_RECAPTCH_SITE_KEY } from "./../../config/index";
+// import { VITE_GOOGLE_RECAPTCH_SITE_KEY } from "./../../config/index";
 import { GetUserRolePermission } from "@/services/userService";
 import { GetSlugByUserId } from "@/services/employeeService";
 
@@ -141,7 +141,7 @@ const Login = () => {
                     // validationSchema={LoginValidationSchema()}
                     onSubmit={OnSubmit}
                   >
-                    {({ setFieldValue }) => (
+                    {({ }) => (
                       <Form>
                         <div className="input-item mb-30px">
                           <TextField

@@ -31,7 +31,7 @@ import { useLocation } from "react-router-dom";
 import ContractPDF from "@/components/pdfDownload/components/ContractPdf";
 import { Avenant } from "@/components/pdfDownload/components/AvenantContractPdf";
 import { ContratDeTravail } from "@/components/pdfDownload/components/ContratDeTravailPdf";
-import { PDFDownloadLink } from "@react-pdf/renderer";
+import { BlobProvider, PDFDownloadLink } from "@react-pdf/renderer";
 import { handleDownload } from "@/helpers/Utils";
 import { Expat } from "@/components/pdfDownload/components/ExpatContractPdf";
 // import { PDFExport } from "@progress/kendo-react-pdf";
@@ -57,6 +57,7 @@ const ContractTemplateVersionList = () => {
   const [loader, setLoader] = useState<boolean>(false);
   const [deleteLoader, setDeleteLoader] = useState<boolean>(false);
   const [sort, setSorting] = useState<string>(pageStateData?.sort ?? "");
+  const [isGeneratingPdf, setIsGeneratingPdf] = useState<boolean>(false); // Added state for PDF generation
   const [sortType, setSortingType] = useState<boolean>(
     pageStateData?.sortType ?? true
   );
@@ -408,37 +409,36 @@ const ContractTemplateVersionList = () => {
       )}
       {contractVersionPDFDetail && exportFlag && (
         <div className="h-0 overflow-hidden">
-          {/* {PDFExportFileName === ContractPdfEnumTypes.Expat_Contract ? (
-            <PDFGenerator
-              key={PDFExportFileName}
-              PDFRef={pdfExportRef}
-              fileName={PDFExportFileName}
-              repeatHeaders={true}
-              isShow={true}
-              content={
-                getContentForPDF()
-                // <ContractPDF
-                //   data={contractVersionPDFDetail?.description?.replaceAll(
-                //     /&lt;br&gt;/g,
-                //     " "
-                //   )}
-                // />
+          <BlobProvider document={getContentForPDF()}>
+            {({ blob, loading, error }: { 
+              blob: Blob | null; 
+              loading: boolean; 
+              error: Error | null 
+            }) => {
+              // Update loading state
+              setIsGeneratingPdf(loading);
+              
+              // Handle download when blob is ready
+              if (blob && !loading && !error) {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${PDFExportFileName}.pdf`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                setExportFlag(false);
               }
-              isFooter={false}
-            ></PDFGenerator>
-          ) : ( */}
-          <PDFDownloadLink
-            document={getContentForPDF()}
-            fileName={PDFExportFileName}
-          >
-            {({ blob, loading }: { blob: Blob | null; loading: boolean }) => {
-              if (!loading && blob) {
-                handleDownload({ blob, PDFExportFileName, setExportFlag });
-              }
-              return loading ? "Loading document..." : "Download now!";
+              
+              // Show loading state
+              return (
+                <div className="text-center py-4">
+                  {loading ? 'Generating PDF...' : 'Preparing download...'}
+                </div>
+              );
             }}
-          </PDFDownloadLink>
-          {/* )} */}
+          </BlobProvider>
         </div>
       )}
     </>

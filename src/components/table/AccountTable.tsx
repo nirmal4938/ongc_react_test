@@ -239,7 +239,7 @@ export const AccountTable = (props: AccountPoTableProp) => {
                 props.type === AccountPO.OUTER
                   ? currentValue?.type != "Medical"
                     ? Number(currentValue?.total).toFixed(2)
-                    : 0 ?? 0
+                    : 0
                   : props.type === AccountPO.INNER
                   ? (currentValue?.dailyRate &&
                       currentValue?.timesheetQty &&
@@ -485,7 +485,7 @@ export const AccountTable = (props: AccountPoTableProp) => {
                 props.type === AccountPO.OUTER
                   ? currentValue?.type != "Medical"
                     ? Number(currentValue?.total).toFixed(2)
-                    : 0 ?? 0
+                    : 0
                   : props.type === AccountPO.INNER
                   ? (currentValue?.dailyRate &&
                       currentValue?.timesheetQty &&
@@ -704,7 +704,7 @@ export const AccountTable = (props: AccountPoTableProp) => {
                 props.type === AccountPO.OUTER
                   ? currentValue?.type != "Medical"
                     ? Number(currentValue?.total).toFixed(2)
-                    : 0 ?? 0
+                    : 0
                   : props.type === AccountPO.INNER
                   ? (currentValue?.dailyRate &&
                       currentValue?.timesheetQty &&

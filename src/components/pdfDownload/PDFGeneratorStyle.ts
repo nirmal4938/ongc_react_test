@@ -65,7 +65,7 @@ export const styles = StyleSheet.create({
   },
   header: {
     fontSize: 14,
-    fontStyle: "Italic",
+    fontStyle: "italic",
     marginBottom: 10,
     textAlign: "center",
   },

@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
-  },
+ "scripts": {
+  "dev": "vite",
+  "build": "tsc && vite build",
+  "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+  "preview": "vite preview",
+  "start": "serve -s dist"
+},
   "dependencies": {
     "@air/react-drag-to-select": "^5.0.8",
     "@progress/kendo-react-pdf": "^5.15.0",
@@ -45,6 +46,7 @@
     "react-slick": "^0.29.0",
     "react-toastify": "^9.1.2",
     "redux-persist": "^6.0.0",
+    "serve": "^14.2.4",
     "slick-carousel": "^1.8.1",
     "socket.io-client": "^4.6.1",
     "sweetalert2": "^11.7.5",
